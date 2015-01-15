@@ -19,3 +19,6 @@ deploy:
   api-key: "0d535a33af860566d27785f3de57fceba6422e38"
   file: "release-$TRAVIS_BUILD_NUMBER.tar.gz"
   skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
