@@ -12,12 +12,12 @@ script:
   - rebar/rebar ct skip_deps=true
   - rebar/rebar generate
   - cd release
-  - tar -cz -f ../release.tar.gz *
+  - tar -cz -f ../release-$TRAVIS_TAG.tar.gz *
   - cd ..
 deploy:
   provider: releases
   api-key: "0d535a33af860566d27785f3de57fceba6422e38"
-  file: "release.tar.gz"
+  file: "release-$TRAVIS_TAG.tar.gz"
   skip_cleanup: true
   on:
     tags: true
