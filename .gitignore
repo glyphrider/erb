@@ -3,3 +3,4 @@
 app/*/ebin
 app/*/logs
 app/*/.eunit
+release
