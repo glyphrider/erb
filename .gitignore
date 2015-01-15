@@ -1,0 +1,5 @@
+*~
+*.beam
+app/*/ebin
+app/*/logs
+app/*/.eunit
