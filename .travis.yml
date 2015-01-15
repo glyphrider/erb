@@ -11,7 +11,9 @@ script:
   - rebar/rebar eunit skip_deps=true
   - rebar/rebar ct skip_deps=true
   - rebar/rebar generate
-  - tar -cz -C release -f release-${TRAVIS_BUILD_NUMBER}.tar.gz *
+  - cd release
+  - tar -cz -f ../release-${TRAVIS_BUILD_NUMBER}.tar.gz *
+  - cd ..
 deploy:
   provider: releases
   api-key: "0d535a33af860566d27785f3de57fceba6422e38"
