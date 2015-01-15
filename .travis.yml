@@ -4,7 +4,8 @@ otp_release:
 install:
   - cd rebar
   - ./bootstrap
+  - cd ..
 script:
-  - rebar compile
-  - rebar eunit skip_deps=true
-  - rebar ct skip_deps=true
+  - rebar/rebar compile
+  - rebar/rebar eunit skip_deps=true
+  - rebar/rebar ct skip_deps=true
