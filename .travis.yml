@@ -1,19 +1,14 @@
 language: erlang
 otp_release:
   - 17.3
-install:
-  - cd rebar
-  - ./bootstrap
-  - cd ..
 script:
-  - rebar/rebar get-deps
-  - rebar/rebar compile
-  - rebar/rebar eunit skip_deps=true
-  - rebar/rebar ct skip_deps=true
-  - rebar/rebar generate
-  - cd release
-  - tar -cz -f ../release-$TRAVIS_TAG.tar.gz *
-  - cd ..
+  - rebar get-deps
+  - rebar compile
+  - rebar eunit -r skip_deps=true
+  - rebar ct -r skip_deps=true
+  - rebar generate
+before_deploy:
+  - tar -cz -C release -f ../release-$TRAVIS_TAG.tar.gz .
 deploy:
   provider: releases
   api-key: "0d535a33af860566d27785f3de57fceba6422e38"
