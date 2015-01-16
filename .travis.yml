@@ -8,7 +8,7 @@ script:
   - rebar ct -r skip_deps=true
   - rebar generate
 before_deploy:
-  - tar -cz -C release -f ../release-$TRAVIS_TAG.tar.gz .
+  - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
   provider: releases
   api-key: "0d535a33af860566d27785f3de57fceba6422e38"
