@@ -1,26 +1,27 @@
 language: erlang
 otp_release:
-  - 17.3
+- 17.3
 script:
-  - rebar get-deps
-  - rebar compile
-  - rebar eunit -r skip_deps=true
-  - rebar ct -r skip_deps=true
-  - rebar generate
+- rebar get-deps
+- rebar compile
+- rebar eunit -r skip_deps=true
+- rebar ct -r skip_deps=true
+- rebar generate
 after_success:
-  - mkdir s3
-  - tar -cz -C release -f s3/build-$TRAVIS_BUILD_NUMBER.tar.gz .
+- mkdir s3
+- tar -cz -C release -f s3/build-$TRAVIS_BUILD_NUMBER.tar.gz .
 before_deploy:
-  - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
+- tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
   - provider: s3
-    access_key_id: "AKIAIJKIG6WU72556DHQ"
-    secret_access_key: "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"
-    bucket: "erb-archive"
-    local_dir: s3
-    file: "release-$TRAVIS_BUILD_NUMBER.tar.gz"
+    access_key_id: AKIAIDPKYFU3SULAGBJA
+    secret_access_key:
+      secure: glWR+sD7QT0PSxlwG9L5UiZzdtgTRWX+nAnFoJo2ahk9IbpBgT6ahL3C2O6mBfvuVlwH+2AMt80c+Kdk+frLjSHeJ3uZ7FjhYfP2hyyta2P97kFF3/U4ihcVOfqNf/3DUQI0luAXTFgJzVLj3WQI1BFZU37E7n5QZcfsOCxL/bI=
+    bucket: erb-archive
+    local-dir: s3
     skip_cleanup: true
     on:
+      repo: glyphrider/erb
       all_branches: true
   - provider: releases
     api-key: "0d535a33af860566d27785f3de57fceba6422e38"
