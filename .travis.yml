@@ -18,7 +18,6 @@ deploy:
     secret_access_key: "WhakEVbr691j+WxDOVRyRp0Vsx11bQKUAQph/shW"
     bucket: "erb-archive"
     local_dir: s3
-    file: "release-$TRAVIS_BUILD_NUMBER.tar.gz"
     skip_cleanup: true
     on:
       all_branches: true
