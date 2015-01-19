@@ -10,12 +10,14 @@ script:
 after_success:
   - tar -cz -C release -f build-$TRAVIS_BUILD_NUMBER.tar.gz .
 before_deploy:
-  - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
+  - mkdir s3
+  - tar -cz -C release -f s3/release-$TRAVIS_TAG.tar.gz .
 deploy:
   - provider: s3
     access_key_id: "AKIAIJKIG6WU72556DHQ"
     secret_access_key: "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"
     bucket: "erb-archive"
+    local_dir: s3
     file: "release-$TRAVIS_BUILD_NUMBER.tar.gz"
     skip_cleanup: true
     on:
