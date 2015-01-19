@@ -8,10 +8,10 @@ script:
   - rebar ct -r skip_deps=true
   - rebar generate
 after_success:
-  - tar -cz -C release -f build-$TRAVIS_BUILD_NUMBER.tar.gz .
-before_deploy:
   - mkdir s3
-  - tar -cz -C release -f s3/release-$TRAVIS_TAG.tar.gz .
+  - tar -cz -C s3/release -f build-$TRAVIS_BUILD_NUMBER.tar.gz .
+before_deploy:
+  - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
   - provider: s3
     access_key_id: "AKIAIJKIG6WU72556DHQ"
