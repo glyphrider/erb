@@ -12,13 +12,6 @@ after_success:
 before_deploy:
   - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
-  - provider: releases
-    api-key: "0d535a33af860566d27785f3de57fceba6422e38"
-    file: "release-$TRAVIS_TAG.tar.gz"
-    skip_cleanup: true
-    on:
-      tags: true
-      all_branches: true
   - provider: s3
     access_key_id: "AKIAIJKIG6WU72556DHQ"
     secret_access_key: "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"
@@ -26,4 +19,11 @@ deploy:
     file: "release-$TRAVIS_BUILD_NUMBER.tar.gz"
     skip_cleanup: true
     on:
+      all_branches: true
+  - provider: releases
+    api-key: "0d535a33af860566d27785f3de57fceba6422e38"
+    file: "release-$TRAVIS_TAG.tar.gz"
+    skip_cleanup: true
+    on:
+      tags: true
       all_branches: true
