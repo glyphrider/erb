@@ -9,9 +9,9 @@ script:
   - rebar generate
 after_success:
   - mkdir s3
-  - tar -cz -C s3/release -f build-$TRAVIS_BUILD_NUMBER.tar.gz .
+  - tar -cz -C release -f s3/build-$TRAVIS_BUILD_NUMBER.tar.gz .
 before_deploy:
-  - [ -z "$TRAVIS_TAG" ] || tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
+  - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
   - provider: s3
     access_key_id: "AKIAIJKIG6WU72556DHQ"
