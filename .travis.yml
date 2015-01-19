@@ -14,8 +14,10 @@ before_deploy:
   - tar -cz -C release -f release-$TRAVIS_TAG.tar.gz .
 deploy:
   - provider: s3
-    access_key_id: "AKIAIJKIG6WU72556DHQ"
-    secret_access_key: "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"
+    access_key_id:
+      secure: "eekUQdZzNHN0k/l66fMxaHw8yNOABhPN3SxLCkRqfFY8pstYZrkwmPvK9DiV2afB0gJaCSAQWBFi1Xtg2roACvFsBaYTdGNltNkv62xwOvmX4OARMctsYs9VOmldKkl7hD7yrrqdVkhVndR/PCMkLK6BeJXtzZ57qrCBtnyOcYU="
+    secret_access_key:
+      secure: "lJLpBSqVOZKS5xZ8gr89mDJLJs9njSKK84ccWMZB3tLEjw0k4MDPID9HkSdvoIFCW5aYpJPzKt4TPMyQaRVFRqGFZPUhDagxarywMUju7lQib+HjSWQqgYP0V7xDt+xDS+cs7TsiI1EQt3JZDPAGMTof7ZFXurXKdAATpPryvVk="
     bucket: "erb-archive"
     local_dir: s3
     skip_cleanup: true
