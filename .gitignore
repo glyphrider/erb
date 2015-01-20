@@ -1,6 +1,8 @@
 *~
 *.beam
 app/*/ebin
+app/*/deps
 app/*/logs
 app/*/.eunit
-release
+erb
+erl_crash.dump
