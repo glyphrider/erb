@@ -6,3 +6,4 @@ app/*/logs
 app/*/.eunit
 erb
 erl_crash.dump
+deps
