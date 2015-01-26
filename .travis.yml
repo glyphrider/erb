@@ -10,7 +10,7 @@ script:
 - rebar generate
 after_success:
 - mkdir s3
-- tar -cz -f s3/build-$TRAVIS_BUILD_NUMBER.tar.gz erb
+- tar -cz -f s3/build-$TRAVIS_JOB_NUMBER.tar.gz erb
 before_deploy:
 - tar -cz -f release-$TRAVIS_TAG.tar.gz erb
 deploy:
